@@ -1,0 +1,22 @@
+start: auto
+version: 0.1
+
+executables:
+{
+	ledmatrixDisplay = ( ledmatrixDisplayComponent )
+}
+
+processes:
+{
+	run:
+	{
+		( ledmatrixDisplay )
+	}
+}
+
+bindings:
+{
+	ledmatrixDisplay.ledmatrixDisplayComponent.io -> dataHub.io
+	ledmatrixDisplay.ledmatrixDisplayComponent.admin -> dataHub.admin
+	ledmatrixDisplay.ledmatrixDisplayComponent.ledmatrix -> ledmatrixService.ma_ledmatrix
+}

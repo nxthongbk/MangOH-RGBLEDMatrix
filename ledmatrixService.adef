@@ -1,0 +1,35 @@
+version: 0.1
+start: auto
+
+executables:
+{
+	ledmatrixService = ( ledmatrixServiceComponent )
+}
+
+processes:
+{
+	envVars:
+	{
+		LE_LOG_LEVEL = DEBUG
+	}
+
+	run:
+	{
+		( ledmatrixService )
+	}
+	faultAction: stopApp
+}
+
+requires:
+{
+	device:
+	{
+		// replace these devices based on your module
+		[rw]	/dev/i2c-1	/dev/
+	}
+}
+
+extern:
+{
+	ledmatrixService.ledmatrixServiceComponent.ma_ledmatrix
+}
